@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatting</title>
+  <style>
+    #message-container {
+      height: 400px;
+      overflow-y: scroll;
+    }
+    .message {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .message.sender {
+      background-color: #e2f7ff;
+    }
+    .message.receiver {
+      background-color: #faffea;
+    }
+    h1{
+        text-align: center;
+        color:rosybrown;
+    }
+    h2{
+        text-align: center;
+        s: 40px;
+    }
+    h3{
+        text-align: center;
+    }
+  </style>
+  <script>
+    function sendMessage() {
+      var messageInput = document.getElementById("message-input");
+      var message = messageInput.value;
+      var username = document.getElementById("username").value;
+      
+      if (message.trim() !== "") {
+        var messageContainer = document.getElementById("message-container");
+        var messageElement = document.createElement("div");
+        messageElement.classList.add("message");
+        messageElement.classList.add("sender");
+        messageElement.innerText = "[" + username + "]: " + message;
+        messageContainer.appendChild(messageElement);
+        
+        messageInput.value = "";
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Chatting</h1>
+  
+  
+  <div id="message-container"></div>
+  
+  <div>
+    <h2 class="uname"><br>
+    <input type="text" id="username" placeholder="Enter your username"  style="height: 30px;" size="30"></h2>
+  </div>
+
+
+  <div>
+    <h3 class="sendmessage">
+    <input type="text" id="message-input" placeholder="Type your message..." style="height: 30px;" size="30">
+    <button type="button" onclick="sendMessage()"style=style="" >Send</button></h3>
+  </div>
+</body>
+</html>
